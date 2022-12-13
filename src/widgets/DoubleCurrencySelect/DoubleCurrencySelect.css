@@ -1,0 +1,62 @@
+.blocks-double {
+    width: 800px;
+    margin: 30px auto;
+    padding: 10px;
+
+    display: flex;
+    justify-content: space-between;
+
+    border: 2px solid #000000;
+}
+
+.is-equal-to {
+    margin: auto;
+    font-size: 50px;
+}
+
+
+
+.double-block-inside {
+    width: 350px;
+    height: 100px;
+
+    border: 1px solid #000000;
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.inside-color {
+    background-color: #232635;
+}
+
+.outside-color {
+    background-color: #373747;
+}
+
+.input-exchanger {
+    background: transparent;
+    outline: none;
+    color: white;
+
+    text-align: center;
+    width: 150px;
+    height: 30px;
+
+    font-size: 22px;
+    border: none;
+}
+
+.selector {
+    margin-top: 5px;
+
+    background: transparent;
+    outline: none;
+    color: white;
+
+    border: none;
+
+}

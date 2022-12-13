@@ -1,0 +1,33 @@
+.header {
+
+    padding: 10px;
+    margin: 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #373747;
+    color: #f7f6ff;
+}
+
+.header-text {
+    margin: auto 0;
+}
+
+.vertical-text {
+    font-size: 20px;
+    display: flex;
+
+}
+
+.header-live-course {
+    display: flex;
+}
+
+.border-space {
+    border: 1px solid #000000;
+    border-radius: 15px;
+
+    background-color: #232635;
+    padding: 10px;
+}
