@@ -1,25 +1,26 @@
 import './DoubleCurrencySelect.css';
 import {useEffect, useState} from "react";
 
-const DoubleCurrencySelect = ({defaultCurrencies, getCurrencyPrice}) => {
+const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
 
-    const [ratesCur, setRatesCur] = useState({});
-    const {rates} = ratesCur;
     const [fromCurrency, setFromCurrency] = useState('UAH')
     const [toCurrency, setToCurrency] = useState('USD')
     const [fromPrice, setFromPrice] = useState();
     const [toPrice, setToPrice] = useState();
 
-    useEffect(()=>{
-        getCurrencyPrice('USD', defaultCurrencies)
-            .then(res=>setRatesCur(res));
-    },[])
 
-    const Select = ({ onChangeCurrency }) => {
+    useEffect(() => {
+        if (ratesCur.rates) {
+            onChangeFromPrice(toPrice)
+            onChangeToPrice(fromPrice)
+        }
+    }, [fromCurrency, toCurrency])
+
+    const Select = ({ onChangeCurrency, currency }) => {
         return (
-            <select className='selector'>
+            <select className='selector' value={currency} onChange={onChangeCurrency}>
                 {defaultCurrencies.map((cur) => (
-                    <option key={cur} onClick={onChangeCurrency(cur)}>{cur}</option>
+                     <option key={cur}>{cur}</option>
                 ))}
             </select>
             )
@@ -34,23 +35,23 @@ const DoubleCurrencySelect = ({defaultCurrencies, getCurrencyPrice}) => {
                     placeholder='0'
                     onChange={(e) => onChangeValue(e.target.value)}
                     type={'number'}
-                    value={value}
+                    value={Math.floor(value * 100) / 100}
                 />
-                <Select onChangeCurrency={onChangeCurrency}/>
+                <Select currency={currency} onChangeCurrency={onChangeCurrency}/>
             </div>
         )
     }
 
     const onChangeFromPrice = (value) => {
-        const price = value / rates[fromCurrency];
-        const result = price * rates[toCurrency];
+        const price = value / ratesCur.rates[toCurrency];
+        const result = price * ratesCur.rates[fromCurrency];
         setToPrice(result);
         setFromPrice(value)
     }
 
     const onChangeToPrice = (value) => {
-        const price = value / rates[toCurrency];
-        const result = price * rates[fromCurrency];
+        const price = value / ratesCur.rates[fromCurrency];
+        const result = price * ratesCur.rates[toCurrency];
         setFromPrice(result);
         setToPrice(value)
     }
@@ -60,14 +61,14 @@ const DoubleCurrencySelect = ({defaultCurrencies, getCurrencyPrice}) => {
             <SetCurrency
                 value={fromPrice}
                 currency={fromCurrency}
-                onChangeCurrency={setFromCurrency}
+                onChangeCurrency={(e) => setFromCurrency(e.target.value)}
                 onChangeValue={onChangeFromPrice}
             />
             <p className='is-equal-to'>=</p>
             <SetCurrency
                 value={toPrice}
                 currency={toCurrency}
-                onChangeCurrency={setToCurrency}
+                onChangeCurrency={(e) => setToCurrency(e.target.value)}
                 onChangeValue={onChangeToPrice}
             />
         </div>

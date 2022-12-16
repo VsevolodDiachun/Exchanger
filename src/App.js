@@ -1,8 +1,6 @@
 import './App.css';
 
-import BlocksCurrensy from './widgets/BlocksCurrensy/BlocksCurrensy';
 import {useEffect, useState} from "react";
-import axios from 'axios';
 import Header from "./widgets/Header/Header";
 import DoubleCurrencySelect from "./widgets/DoubleCurrencySelect/DoubleCurrencySelect";
 
@@ -22,27 +20,29 @@ const currencies = [ "UAH", "USD", "EUR"];
 }
 */
 
-
-
 //getCurrencyPrice('UAH', ['USD', 'EUR'])
+
+
 
 function App() {
 
+    const [ratesCur, setRatesCur] = useState({});
 
+    useEffect(()=>{
+        getCurrencyPrice('UAH', currencies)
+            .then(res=>setRatesCur(res));
+    },[])
 
 
   return (
       <>
           <Header
+              ratesCur = {ratesCur}
               defaultCurrencies = {currencies}
-              getCurrencyPrice = {getCurrencyPrice}
           />
           <DoubleCurrencySelect
+              ratesCur = {ratesCur}
               defaultCurrencies = {currencies}
-              getCurrencyPrice = {getCurrencyPrice}
-          />
-          <BlocksCurrensy
-          defaultCurrencies = {currencies}
           />
       </>
   );

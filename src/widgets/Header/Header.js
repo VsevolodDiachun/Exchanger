@@ -1,21 +1,11 @@
 import './Header.css'
-import {useEffect, useState} from "react";
-import {logDOM} from "@testing-library/react";
-//import getCurrencyPrice from "../../services/currencyService";
 
-function Header({defaultCurrencies, getCurrencyPrice}) {
-    const [course, setCourse] = useState({});
-    const {rates} = course;
-
-    useEffect(()=>{
-        getCurrencyPrice('UAH', defaultCurrencies)
-            .then(res=>setCourse(res));
-    }, []);
+function Header({defaultCurrencies, ratesCur}) {
 
     const ExchangeRate = () => {
         const RateItem = ({name, index}) => {
             if (name !== 'UAH') {
-                const price = rates ? rates[name] :'loading'
+                const price = ratesCur.rates ? ratesCur.rates[name] :'loading'
                 return <p key={index} className='course-input border-space'>{price} {name}</p>
             }
         }

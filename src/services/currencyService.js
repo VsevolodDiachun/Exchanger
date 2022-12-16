@@ -1,6 +1,6 @@
-async function getCurrencyPrice(base, symbols){
+async function getCurrencyPrice(base, symbols) {
     const myHeaders = new Headers();
-    myHeaders.append("apikey", "jNgCBRjkTJF6fADLYdeBmWy7FyM4FXD2-");
+    myHeaders.append("apikey", "jNgCBRjkTJF6fADLYdeBmWy7FyM4FXD2");
 
     const requestOptions = {
         method: 'GET',
@@ -8,11 +8,12 @@ async function getCurrencyPrice(base, symbols){
         redirect: 'follow'
     };
 
-    //return await fetch(`https://api.apilayer.com/fixer/latest?base=${base}&symbols=${symbols.join(',')}`, requestOptions)
+    return fetch(`https://api.apilayer.com/fixer/latest?base=${base}&symbols=${symbols.join(',')}`, requestOptions)
+        .then((response) => response.json())
+}
 
 
-
-
+/*
     //====================MOCK=====================
     const mockedJson = {
         "success": true,
@@ -22,7 +23,8 @@ async function getCurrencyPrice(base, symbols){
         "rates": {
             "UAH": 1.00,
             "USD": 39.57,
-            "EUR": 40.21
+            "EUR": 40.21,
+            "PLN": 8.75
         }
     }
 
@@ -31,6 +33,6 @@ async function getCurrencyPrice(base, symbols){
     })
     //===================MOCK=======================
 }
-
+*/
 
 export default getCurrencyPrice;

@@ -50,6 +50,12 @@
     border: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .selector {
     margin-top: 5px;
 
@@ -59,4 +65,53 @@
 
     border: none;
 
+}
+
+.out-Light {
+    border: 2px solid #000000;
+    border-radius: 20px;
+    box-shadow: -10px -10px 30px rgb(0, 157, 255), 10px 10px 30px rgb(183, 0, 255);
+}
+
+.area-actual-course {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.input-cur {
+    background: transparent;
+    outline: none;
+    color: white;
+
+    text-align: right;
+    width: 150px;
+    height: 30px;
+
+    font-size: 22px;
+    border: none;
+}
+
+.course-input {
+    font-size: 18px;
+    margin: auto 10px auto 0;
+
+}
+
+.actual-course {
+    width: 270px;
+
+    margin: 0 10px 10px 0;
+    padding: 10px;
+
+    text-align: center;
+
+    border: 1px solid #000000;
+    border-radius: 15px;
+
+    background-color: #232635;
+
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
 }
