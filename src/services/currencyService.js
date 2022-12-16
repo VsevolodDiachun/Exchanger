@@ -12,19 +12,17 @@ async function getCurrencyPrice(base, symbols) {
         .then((response) => response.json())
 }
 
-
 /*
     //====================MOCK=====================
     const mockedJson = {
         "success": true,
-        "timestamp": 1670271663,
+        "timestamp": 1671221463,
         "base": "UAH",
-        "date": "2022-12-05",
+        "date": "2022-12-10",
         "rates": {
-            "UAH": 1.00,
-            "USD": 39.57,
-            "EUR": 40.21,
-            "PLN": 8.75
+            "UAH": 1,
+            "USD": 0.027199,
+            "EUR": 0.025656
         }
     }
 

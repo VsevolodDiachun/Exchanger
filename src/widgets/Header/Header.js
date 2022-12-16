@@ -6,7 +6,7 @@ function Header({defaultCurrencies, ratesCur}) {
         const RateItem = ({name, index}) => {
             if (name !== 'UAH') {
                 const price = ratesCur.rates ? ratesCur.rates[name] :'loading'
-                return <p key={index} className='course-input border-space'>{price} {name}</p>
+                return <p key={index} className='course-input border-space'>{Math.floor(1 / price * 100) / 100} {name}</p>
             }
         }
 

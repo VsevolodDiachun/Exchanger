@@ -8,22 +8,6 @@ import getCurrencyPrice from "./services/currencyService";
 
 const currencies = [ "UAH", "USD", "EUR"];
 
-/*{
-    "success": true,
-    "timestamp": 1670271663,
-    "base": "USD",
-    "date": "2022-12-05",
-    "rates": {
-        "EUR": 0.953401,
-        "GBP": 0.82136
-    }
-}
-*/
-
-//getCurrencyPrice('UAH', ['USD', 'EUR'])
-
-
-
 function App() {
 
     const [ratesCur, setRatesCur] = useState({});

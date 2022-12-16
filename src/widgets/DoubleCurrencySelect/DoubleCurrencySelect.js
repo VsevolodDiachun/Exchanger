@@ -11,8 +11,8 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
 
     useEffect(() => {
         if (ratesCur.rates) {
-            onChangeFromPrice(toPrice)
-            onChangeToPrice(fromPrice)
+            onChangeFromPrice(fromPrice)
+            onChangeToPrice(toPrice)
         }
     }, [fromCurrency, toCurrency])
 
@@ -43,15 +43,15 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
     }
 
     const onChangeFromPrice = (value) => {
-        const price = value / ratesCur.rates[toCurrency];
-        const result = price * ratesCur.rates[fromCurrency];
+        const price = value / ratesCur.rates[fromCurrency];
+        const result = price * ratesCur.rates[toCurrency];
         setToPrice(result);
         setFromPrice(value)
     }
 
     const onChangeToPrice = (value) => {
-        const price = value / ratesCur.rates[fromCurrency];
-        const result = price * ratesCur.rates[toCurrency];
+        const price = value / ratesCur.rates[toCurrency];
+        const result = price * ratesCur.rates[fromCurrency];
         setFromPrice(result);
         setToPrice(value)
     }
