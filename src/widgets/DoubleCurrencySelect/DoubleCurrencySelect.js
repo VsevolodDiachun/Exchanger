@@ -46,14 +46,14 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
         const price = value / ratesCur.rates[fromCurrency];
         const result = price * ratesCur.rates[toCurrency];
         setToPrice(result);
-        setFromPrice(value)
+        setFromPrice(value);
     }
 
     const onChangeToPrice = (value) => {
         const price = value / ratesCur.rates[toCurrency];
         const result = price * ratesCur.rates[fromCurrency];
         setFromPrice(result);
-        setToPrice(value)
+        setToPrice(value);
     }
 
     return(

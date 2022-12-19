@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../../CodeRep/react-beginner-projects/.idea/counter.iml" filepath="$PROJECT_DIR$/../../../CodeRep/react-beginner-projects/.idea/counter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/exchanger.iml" filepath="$PROJECT_DIR$/.idea/exchanger.iml" />
     </modules>
   </component>

@@ -1,6 +1,6 @@
 async function getCurrencyPrice(base, symbols) {
     const myHeaders = new Headers();
-    myHeaders.append("apikey", "jNgCBRjkTJF6fADLYdeBmWy7FyM4FXD2");
+    myHeaders.append("apikey", "ucxLP6WqAR2tGN23lwC9lXHhXkIcqFDi");
 
     const requestOptions = {
         method: 'GET',
@@ -12,8 +12,8 @@ async function getCurrencyPrice(base, symbols) {
         .then((response) => response.json())
 }
 
-/*
-    //====================MOCK=====================
+
+    /*//====================MOCK=====================
     const mockedJson = {
         "success": true,
         "timestamp": 1671221463,
@@ -22,7 +22,8 @@ async function getCurrencyPrice(base, symbols) {
         "rates": {
             "UAH": 1,
             "USD": 0.027199,
-            "EUR": 0.025656
+            "EUR": 0.025656,
+            "PLN": 0.119373
         }
     }
 
@@ -30,7 +31,7 @@ async function getCurrencyPrice(base, symbols) {
         setTimeout(() => res(mockedJson),500)
     })
     //===================MOCK=======================
-}
-*/
+} */
+
 
 export default getCurrencyPrice;
