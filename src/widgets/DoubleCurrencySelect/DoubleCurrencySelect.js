@@ -1,6 +1,38 @@
 import './DoubleCurrencySelect.css';
 import {useEffect, useState} from "react";
 
+const SetCurrency = ({ value, currency, onChangeValue, onChangeCurrency, defaultCurrencies }) => {
+
+
+
+    return (
+        <div className='double-block-inside inside-color'>
+            <input
+                className='input-exchanger'
+                placeholder='0'
+                onChange={(e) => onChangeValue(e.target.value)}
+                type={'number'}
+                value={Math.floor(value * 100) / 100}
+            />
+            <Select
+                currency={currency}
+                onChangeCurrency={onChangeCurrency}
+                defaultCurrencies={defaultCurrencies}
+            />
+        </div>
+    )
+}
+
+const Select = ({ onChangeCurrency, currency, defaultCurrencies }) => {
+    return (
+        <select className='selector' value={currency} onChange={onChangeCurrency}>
+            {defaultCurrencies.map((cur) => (
+                <option key={cur}>{cur}</option>
+            ))}
+        </select >
+    )
+}
+
 const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
 
     const [fromCurrency, setFromCurrency] = useState('UAH')
@@ -15,32 +47,6 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
             onChangeToPrice(toPrice)
         }
     }, [fromCurrency, toCurrency])
-
-    const Select = ({ onChangeCurrency, currency }) => {
-        return (
-            <select className='selector' value={currency} onChange={onChangeCurrency}>
-                {defaultCurrencies.map((cur) => (
-                     <option key={cur}>{cur}</option>
-                ))}
-            </select>
-            )
-    }
-
-    const SetCurrency = ({ value, currency, onChangeValue, onChangeCurrency }) => {
-
-        return (
-            <div className='double-block-inside inside-color'>
-                <input
-                    className='input-exchanger'
-                    placeholder='0'
-                    onChange={(e) => onChangeValue(e.target.value)}
-                    type={'number'}
-                    value={Math.floor(value * 100) / 100}
-                />
-                <Select currency={currency} onChangeCurrency={onChangeCurrency}/>
-            </div>
-        )
-    }
 
     const onChangeFromPrice = (value) => {
         const price = value / ratesCur.rates[fromCurrency];
@@ -63,6 +69,7 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
                 currency={fromCurrency}
                 onChangeCurrency={(e) => setFromCurrency(e.target.value)}
                 onChangeValue={onChangeFromPrice}
+                defaultCurrencies={defaultCurrencies}
             />
             <p className='is-equal-to'>=</p>
             <SetCurrency
@@ -70,6 +77,7 @@ const DoubleCurrencySelect = ({defaultCurrencies, ratesCur}) => {
                 currency={toCurrency}
                 onChangeCurrency={(e) => setToCurrency(e.target.value)}
                 onChangeValue={onChangeToPrice}
+                defaultCurrencies={defaultCurrencies}
             />
         </div>
     )

@@ -10,10 +10,8 @@ async function getCurrencyPrice(base, symbols) {
 
     return fetch(`https://api.apilayer.com/fixer/latest?base=${base}&symbols=${symbols.join(',')}`, requestOptions)
         .then((response) => response.json())
-}
 
-
-    /*//====================MOCK=====================
+    /* //====================MOCK=====================
     const mockedJson = {
         "success": true,
         "timestamp": 1671221463,
@@ -30,8 +28,8 @@ async function getCurrencyPrice(base, symbols) {
     return await new Promise((res, rej)=>{
         setTimeout(() => res(mockedJson),500)
     })
-    //===================MOCK=======================
-} */
+    //===================MOCK======================= */
+}
 
 
 export default getCurrencyPrice;
