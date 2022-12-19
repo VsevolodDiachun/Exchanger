@@ -2,9 +2,6 @@ import './DoubleCurrencySelect.css';
 import {useEffect, useState} from "react";
 
 const SetCurrency = ({ value, currency, onChangeValue, onChangeCurrency, defaultCurrencies }) => {
-
-
-
     return (
         <div className='double-block-inside inside-color'>
             <input
